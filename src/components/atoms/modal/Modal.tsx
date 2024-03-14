@@ -7,10 +7,17 @@ interface ModalProps {
 
 const Modal: React.FC<ModalProps> = ({ children, onClose }) => {
   return (
-    <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
-      <div className="bg-white p-5 rounded">
-        <button onClick={onClose}>Close</button>
-        {children}
+    <div className="fixed inset-0 bg-gray-600 bg-opacity-75 flex items-center justify-center p-4">
+      <div className="relative bg-white rounded-lg shadow-xl overflow-hidden max-w-lg w-full">
+        <div className="flex justify-end p-2">
+          <button
+            onClick={onClose}
+            className="text-gray-400 hover:text-gray-600 transition ease-in-out duration-150"
+          >
+            <span className="sr-only">Close</span>✕
+          </button>
+        </div>
+        <div className="p-6">{children}</div>
       </div>
     </div>
   );

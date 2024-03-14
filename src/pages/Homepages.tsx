@@ -54,27 +54,34 @@ const HomePage: React.FC = () => {
       />
       {selectedCountry && (
         <Modal onClose={() => setSelectedCountry(null)}>
-          <h2>{selectedCountry.name.official}</h2>
-          <img
-            src={selectedCountry.flags.png}
-            alt="Flag"
-            style={{ width: "100px", height: "60px" }}
-          />
-          <p>Country Name: {selectedCountry.name.official}</p>
-          <p>2 character Country Code (CCA2): {selectedCountry.cca2}</p>
-          <p>3 character Country Code (CCA3): {selectedCountry.cca3}</p>
-          <p>
-            Native Country Name:{" "}
-            {Object.values(selectedCountry.name.nativeName)[0]?.official}
-          </p>
-          <p>
-            Alternative Country Names: {selectedCountry.altSpellings.join(", ")}
-          </p>
-          <p>
-            Country Calling Codes: {selectedCountry.idd.root}
-            {selectedCountry.idd.suffixes.join(", ")}
-          </p>
-          {/* Display any other details as required */}
+          <div className="space-y-4">
+            <h2 className="text-xl font-semibold text-gray-900">
+              {selectedCountry.name.official}
+            </h2>
+            <img
+              className="mx-auto h-24 w-auto"
+              src={selectedCountry.flags.png}
+              alt="Flag"
+            />
+            <ul className="list-disc space-y-2 pl-5 text-gray-700">
+              <li>Country Name: {selectedCountry.name.official}</li>
+              <li>2 character Country Code (CCA2): {selectedCountry.cca2}</li>
+              <li>3 character Country Code (CCA3): {selectedCountry.cca3}</li>
+              <li>
+                Native Country Name:{" "}
+                {Object.values(selectedCountry.name.nativeName)[0]?.official}
+              </li>
+              <li>
+                Alternative Country Names:{" "}
+                {selectedCountry.altSpellings.join(", ")}
+              </li>
+              <li>
+                Country Calling Codes: {selectedCountry.idd.root}
+                {selectedCountry.idd.suffixes.join(", ")}
+              </li>
+              {/* Add other details as required */}
+            </ul>
+          </div>
         </Modal>
       )}
       {/* New Pagination Controls */}
