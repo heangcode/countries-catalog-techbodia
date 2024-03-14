@@ -1,6 +1,6 @@
 {
-  "homepage": "https://heangcode.github.io/countries-catalog-techbodia",
   "name": "countries-catalog-techbodia",
+  "homepage": "https://heangcode.github.io/countries-catalog-techbodia",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

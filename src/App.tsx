@@ -4,9 +4,9 @@ import Homepages from "./pages/Homepages";
 
 const App = () => {
   return (
-    <Router>
+    <Router basename="/countries-catalog-techbodia">
       <Routes>
-        <Route path="/countries-catalog-techbodia" element={<Homepages />} />
+        <Route path="/" element={<Homepages />} />
       </Routes>
     </Router>
   );
