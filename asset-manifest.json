@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/countries-catalog-techbodia/static/css/main.68f37270.css",
+    "main.js": "/countries-catalog-techbodia/static/js/main.47a3a42c.js",
+    "index.html": "/countries-catalog-techbodia/index.html",
+    "main.68f37270.css.map": "/countries-catalog-techbodia/static/css/main.68f37270.css.map",
+    "main.47a3a42c.js.map": "/countries-catalog-techbodia/static/js/main.47a3a42c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.68f37270.css",
+    "static/js/main.47a3a42c.js"
+  ]
+}
