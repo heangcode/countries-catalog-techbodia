@@ -2,13 +2,19 @@ import React, { useState } from "react";
 import { CountriesList, Input, Modal } from "../components";
 import useCountries from "../hooks/useCountries";
 import { Country } from "../types/country";
-import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi2";
+import {
+  HiOutlineChevronDown,
+  HiOutlineChevronLeft,
+  HiOutlineChevronRight,
+} from "react-icons/hi2";
+import { Menu } from "@headlessui/react";
 
 const HomePage: React.FC = () => {
   const { countries, loading, error } = useCountries();
   const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
   const itemsPerPage = 25;
 
   // Filter countries based on the search term
@@ -23,12 +29,22 @@ const HomePage: React.FC = () => {
     setSelectedCountry(country);
   };
 
+  const sortedCountries = filteredCountries.sort((a, b) => {
+    if (sortOrder === "asc") {
+      return a.name.official.localeCompare(b.name.official);
+    } else {
+      return b.name.official.localeCompare(a.name.official);
+    }
+  });
+
   const handlePrevPage = () => {
     setCurrentPage((current) => Math.max(current - 1, 1));
   };
 
   const handleNextPage = () => {
-    setCurrentPage((current) => Math.min(current + 1, totalPages));
+    setCurrentPage((current) =>
+      Math.min(current + 1, Math.ceil(sortedCountries.length / itemsPerPage))
+    );
   };
 
   if (loading) return <div>Loading...</div>;
@@ -36,15 +52,54 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="p-10">
-      <Input
-        className="w-[300px]"
-        value={searchTerm}
-        onChange={(e) => {
-          setSearchTerm(e.target.value);
-          setCurrentPage(1); // Reset to first page when search term changes
-        }}
-        placeholder="Search by country name..."
-      />
+      <div className="flex items-center space-x-4">
+        <Input
+          className="w-[300px]"
+          value={searchTerm}
+          onChange={(e) => {
+            setSearchTerm(e.target.value);
+            setCurrentPage(1);
+          }}
+          placeholder="Search by country name..."
+        />
+        <Menu as="div" className="relative inline-block text-left">
+          <Menu.Button className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
+            Sort {sortOrder === "asc" ? "Descending" : "Ascending"}
+            <HiOutlineChevronDown
+              className="-mr-1 ml-2 h-5 w-5"
+              aria-hidden="true"
+            />
+          </Menu.Button>
+          <Menu.Items className="absolute right-0 z-30 mt-2 w-56 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+            <div className="py-1">
+              <Menu.Item>
+                {({ active }) => (
+                  <button
+                    onClick={() => setSortOrder("asc")}
+                    className={`${
+                      active ? "bg-gray-100 text-gray-900" : "text-gray-700"
+                    } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                  >
+                    Ascending
+                  </button>
+                )}
+              </Menu.Item>
+              <Menu.Item>
+                {({ active }) => (
+                  <button
+                    onClick={() => setSortOrder("desc")}
+                    className={`${
+                      active ? "bg-gray-100 text-gray-900" : "text-gray-700"
+                    } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                  >
+                    Descending
+                  </button>
+                )}
+              </Menu.Item>
+            </div>
+          </Menu.Items>
+        </Menu>
+      </div>
       <CountriesList
         countries={filteredCountries.slice(
           (currentPage - 1) * itemsPerPage,
@@ -79,12 +134,10 @@ const HomePage: React.FC = () => {
                 Country Calling Codes: {selectedCountry.idd.root}
                 {selectedCountry.idd.suffixes.join(", ")}
               </li>
-              {/* Add other details as required */}
             </ul>
           </div>
         </Modal>
       )}
-      {/* New Pagination Controls */}
       <div className="flex items-center space-x-4 justify-center mt-4">
         <button
           onClick={handlePrevPage}
