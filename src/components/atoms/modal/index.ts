@@ -1,3 +1,3 @@
-import { CountryModal } from "./CountryModal";
+import { Modal } from "./Modal";
 
-export { CountryModal };
+export { Modal };
