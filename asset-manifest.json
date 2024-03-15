@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/countries-catalog-techbodia/static/css/main.68f37270.css",
-    "main.js": "/countries-catalog-techbodia/static/js/main.e3152c98.js",
+    "main.css": "/countries-catalog-techbodia/static/css/main.34ea651a.css",
+    "main.js": "/countries-catalog-techbodia/static/js/main.e1ced360.js",
     "index.html": "/countries-catalog-techbodia/index.html",
-    "main.68f37270.css.map": "/countries-catalog-techbodia/static/css/main.68f37270.css.map",
-    "main.e3152c98.js.map": "/countries-catalog-techbodia/static/js/main.e3152c98.js.map"
+    "main.34ea651a.css.map": "/countries-catalog-techbodia/static/css/main.34ea651a.css.map",
+    "main.e1ced360.js.map": "/countries-catalog-techbodia/static/js/main.e1ced360.js.map"
   },
   "entrypoints": [
-    "static/css/main.68f37270.css",
-    "static/js/main.e3152c98.js"
+    "static/css/main.34ea651a.css",
+    "static/js/main.e1ced360.js"
   ]
 }
