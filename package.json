@@ -1,6 +1,6 @@
 {
-  "name": "countries-catalog-techbodia",
   "homepage": "https://heangcode.github.io/countries-catalog-techbodia",
+  "name": "countries-catalog-techbodia",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -23,7 +23,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "redeploy": "yarn build",
+    "predeploy": "yarn build",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
