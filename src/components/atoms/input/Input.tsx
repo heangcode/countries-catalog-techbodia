@@ -24,7 +24,7 @@ const Input: React.FC<InputProps> = ({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="mt-1 block w-full pl-10 p-2 border-gray-300 shadow-sm border  focus:border-none focus:outline-none rounded-md"
+        className="mt-1 block w-full pl-10 p-2 border-gray-300 shadow-sm border  focus:border-gray-300 focus:outline-none rounded-md"
       />
     </div>
   );

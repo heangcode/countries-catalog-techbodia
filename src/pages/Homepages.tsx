@@ -63,7 +63,7 @@ const HomePage: React.FC = () => {
           placeholder="Search by country name..."
         />
         <Menu as="div" className="relative inline-block text-left">
-          <Menu.Button className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
+          <Menu.Button className="inline-flex justify-center w-full px-4 py-2.5 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
             Sort {sortOrder === "asc" ? " Ascending" : "Descending"}
             <HiOutlineChevronDown
               className="-mr-1 ml-2 h-5 w-5"
